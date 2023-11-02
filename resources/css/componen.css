@@ -1,0 +1,134 @@
+.navbar {
+    width: 100%;
+    height: 75px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+.navbar h5 {
+    color: white;
+}
+.hidden-nav {
+    background-color: white;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+.hidden-nav h5 {
+    color: black;
+}
+.navbar .img-lambang {
+    width: 50px;
+    height: 65px;
+}
+.menu-navigasi {
+    display: none;
+    /* color: ; */
+}
+
+.open-menu-navigasi {
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    margin-top: 75px;
+    gap: 10px;
+}
+.open-menu-navigasi a {
+    width: 100%;
+    text-align: center;
+}
+.open-menu-navigasi a:hover {
+    background-color: rgb(226 232 240);
+    cursor: pointer;
+}
+.filter-comp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--smoke);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.filter-comp h1 {
+    font-weight: bold;
+}
+.text-title-filter {
+    font-weight: bold;
+}
+@media screen and (max-width: 850px) {
+    .animasi-filter {
+        animation: animasiFilter 0.5s ease-in-out;
+        -webkit-animation: animasiFilter 0.5s ease-in-out;
+    }
+    @keyframes animasiFilter {
+        from {
+            transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+            -moz-transform: translateX(-100%);
+            -ms-transform: translateX(-100%);
+            -o-transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+            -webkit-transform: translateX(0);
+            -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+            -o-transform: translateX(0);
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navigasi {
+        display: none;
+    }
+    .navbar .img-lambang {
+        width: 35px;
+        height: 50px;
+    }
+    .menu-navigasi {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        width: 35px;
+        height: 35px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -ms-border-radius: 30px;
+        -o-border-radius: 30px;
+    }
+    .menu-navigasi:hover {
+        scale: 0.8;
+    }
+}
+.leaflet-container {
+    height: 35vw;
+    width: 90%;
+    z-index: 0;
+}
+
+.maps-view {
+    height: 500px;
+}
+
+@media screen and (max-width: 640px) {
+    .leaflet-container {
+        width: 100%;
+        height: 50vw;
+    }
+    .maps-view {
+        height: 200px;
+    }
+}

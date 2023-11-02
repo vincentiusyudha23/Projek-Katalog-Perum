@@ -1,0 +1,28 @@
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.overlay-object {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.overlay-object.focused {
+    background-color: lightblue;
+}
