@@ -37,6 +37,19 @@ const CreateData = (props) => {
         toolbar: toolbarOptions
     }
 
+    const handleSaveVideo = (e) => {
+        const file = e.target.files[0]
+
+        if (file && file.size > 20971520) {
+            alert('Video terlalu besar, maksimal 20 MB (file size: ' + (file.size / 1048576).toFixed(2) + ' MB)')
+            e.target.value = '';
+        } else {
+            setVideoPerumahan(file)
+        }
+    }
+
+    console.log(getvideoperumahan)
+
     const handleSaveData = async (e) => {
         e.preventDefault()
         const formData = new FormData();
@@ -97,7 +110,7 @@ const CreateData = (props) => {
                             <h1 className='text-xl mb-5'>Create New Data</h1>
                         </div>
                         <div className='w-full flex flex-col-reverse lg:flex-row'>
-                            <div className='w-full lg:w-[55%] pt-20 md:pt-2'>
+                            <div className='w-full lg:w-[55%] mt-20 md:mt-2'>
                                 <div className='flex flex-col mb-2'>
                                     <InputLabel htmlFor="nama" value="Nama Perumahan" />
                                     <TextInput
@@ -214,7 +227,7 @@ const CreateData = (props) => {
                                     />
                                 </div>
                             </div>
-                            <div className='w-full lg:w-[45%] p-2 h-[50vw] md:h-[30vw] lg:h-[55vh] mb-3 lg:mb-0 md:flex flex-col justify-center items-center lg:items-start'>
+                            <div className=' w-full lg:w-[45%] p-2 h-[50vw] md:h-[30vw] lg:h-[55vh] mb-3 lg:mb-0 md:flex flex-col justify-center items-center lg:items-start'>
                                 <h1>Foto Utama</h1>
                                 <div className='w-full md:w-2/4 lg:w-full h-full flex flex-col items-center p-0 border border-base-content rounded-lg '>
                                     <DropDragOneFile
@@ -229,7 +242,7 @@ const CreateData = (props) => {
                                         type='file'
                                         accept='video/*'
                                         className='file-input border border-base-content w-full file-input-md'
-                                        onChange={(e) => setVideoPerumahan(e.target.files[0])}
+                                        onChange={handleSaveVideo}
                                     />
                                 </div>
                             </div>

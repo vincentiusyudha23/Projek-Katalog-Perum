@@ -11,7 +11,7 @@ import PrevImage from '@/Components/PrevImage';
 import Modal from '@/Components/Modal';
 import AlertComp from '@/Components/AlertComp';
 import { useEffect } from 'react';
-import ReactQuill from 'react-quill';
+import ReactQuill, { Quill } from 'react-quill';
 
 
 
@@ -35,9 +35,6 @@ const FormEditData = (props) => {
 
         [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
         // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-        // [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-        // [{ 'font': [] }],
         [{ 'align': [] }],
 
         ['clean']                                         // remove formatting button
@@ -102,12 +99,22 @@ const FormEditData = (props) => {
         setText(value);
     }
 
+    const handleSaveVideo = (e) => {
+        const file = e.target.files[0]
+
+        if (file && file.size > 20971520) {
+            alert('Video terlalu besar, maksimal 20 MB (file size: ' + (file.size / 1048576).toFixed(2) + ' MB)')
+            e.target.value = '';
+        } else {
+            setData('videoperumahan', file)
+        }
+    }
+
     useEffect(() => {
         if (data.rincian_psu) {
             setText(data.rincian_psu)
         }
     }, [data.rincian_psu])
-
 
 
     const handleSaveImage = () => {
@@ -266,31 +273,6 @@ const FormEditData = (props) => {
                                         />
                                     </div>
                                 </div>
-
-                                {/* Kode Sementara */}
-
-                                {/* <div className='flex flex-wrap gap-4 mb-2'>
-                                    <div className='flex flex-col w-[48.5%] flex-grow'>
-                                        <InputLabel htmlFor="easting" value="Easting" />
-                                        <TextInput
-                                            id="easting"
-                                            type="number"
-                                            className="mt-1 block w-full input-sm"
-                                            value={data.easting}
-                                            onChange={(e) => setData('easting', e.target.value)}
-                                        />
-                                    </div>
-                                    <div className='flex flex-col w-[48.5%] flex-grow'>
-                                        <InputLabel htmlFor="northing" value="Northing" />
-                                        <TextInput
-                                            id="northing"
-                                            type="number"
-                                            className="mt-1 block w-full input-sm"
-                                            value={data.northing}
-                                            onChange={(e) => setData('northing', e.target.value)}
-                                        />
-                                    </div>
-                                </div> */}
                                 <div className='flex flex-col mb-2'>
                                     <InputLabel htmlFor="tpu" value="TPU" />
                                     <TextInput
@@ -306,18 +288,12 @@ const FormEditData = (props) => {
                                         type="file"
                                         accept='video/*'
                                         className="file-input border border-base-content w-full file-input-md"
-                                        onChange={(e) => setData('videoperumahan', e.target.files[0])} />
+                                        onChange={handleSaveVideo} />
                                 </div>
                                 <div className='w-full relative'>
                                     <label className='label'>
                                         <span className='label-text'>Rincian PSU</span>
                                     </label>
-                                    {/* <textarea
-                                        className="textarea textarea-bordered border-base-content h-[30vh] w-full"
-                                        placeholder="Rincian Psu..."
-                                        defaultValue={data.rincian_psu}
-                                        onChange={(e) => setData('rincian_psu', e.target.value)}
-                                    ></textarea> */}
                                     <ReactQuill
                                         value={text}
                                         onChange={handleRincianPsu}

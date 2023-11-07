@@ -5,10 +5,8 @@ import CarouselComp from '@/Components/CarouselComp'
 import { Head } from '@inertiajs/react';
 import FullScreenComp from '@/Components/FullScreenComp';
 
-
 const ShowData = (props) => {
     const fakeUrl = props.perumahan.url_maps?.replace(/width="(800|600)" height="(600|450)"/g, 'width="100%" height="100%"')
-
     return (
         <AuthenticatedLayout
             user={props.auth.user}
@@ -46,7 +44,6 @@ const ShowData = (props) => {
                             </label>
                             <div dangerouslySetInnerHTML={{ __html: props.perumahan.rincian_psu }} className='border-2 rounded-md p-2 min-h-[20vh]'>
                             </div>
-                            {/* <textarea className="textarea textarea-bordered w-full textarea-md font-black h-full" placeholder={props.perumahan.rincian_psu} readOnly></textarea> */}
                         </div>
                     </div>
                     <div className='w-full flex flex-col my-5'>
@@ -56,6 +53,7 @@ const ShowData = (props) => {
                                 <div className='w-[100%] md:w-[75%] h-[40vw]'
                                     dangerouslySetInnerHTML={{ __html: fakeUrl }}
                                 >
+
                                 </div>
                             </div>
                         </div>

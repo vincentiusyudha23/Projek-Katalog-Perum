@@ -270,8 +270,5 @@ class AdminController extends Controller
         return Excel::download(new ExportDataPerumahan, 'Data Perumahan.xlsx');
     }
 
-    public function ViewVideo(){
-        $disk = Storage::url('videoperumahan/231011032425.mp4');
-        return $disk;
-    }
+
 }

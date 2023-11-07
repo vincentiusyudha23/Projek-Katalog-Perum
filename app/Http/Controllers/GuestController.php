@@ -90,10 +90,4 @@ class GuestController extends Controller
             'videoUrl'=>$videoUrl
         ]);
     }
-
-    public function ImportData(Request $request){
-        // dd($request->file('file'));
-        Excel::import(new DataPerumahanImport, $request->file('file'));
-        return "Berhasil MengImport Data";
-    }
 }

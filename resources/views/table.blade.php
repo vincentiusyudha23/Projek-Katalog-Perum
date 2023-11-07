@@ -28,7 +28,7 @@
             <td>{{ $value['luas_lahan_perumahan'] }}</td>
             <td>{{ $value['jumlah_rumah'] }}</td>
             <td>{{ $value['luas_PSU'] }}</td>
-            <td>{{ $value['rincian_psu'] }}</td>
+            <td>{{ strip_tags($value['rincian_psu'])}}</td>
             <td>{{ $value['tpu'] }}</td>
             <td>{{ $value['tahun_berdiri'] }}</td>
         </tr>

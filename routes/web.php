@@ -19,18 +19,10 @@ use App\Http\Controllers\AddPhotoController;
 |
 */
 
-
-// Route::get('/',function(){
-//     return Inertia::render('Home');
-// });
 Route::get('/', [GuestController::class,'home'])->name('homepage');
 Route::get('/livepresent', [GuestController::class,'livepresent'])->name('livepresent');
 Route::get('/katalog',[GuestController::class,'katalogpage'])->name('katalogpage');
 Route::get('/perumahan/{nama}',[GuestController::class,'show'])->name('perumahanpage');
-
-
-
-
 
 Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::get('/',[AdminController::class,'index']);
@@ -48,11 +40,6 @@ Route::middleware(['auth','admin'])->prefix('admin')->group(function(){
     Route::post('/addimagesiteplan',[AdminController::class,'AddImageSiteplan'])->name('editImage.siteplan');
     Route::get('/exportdata',[AdminController::class,'ExportData'])->name('exportdata');
 });
-
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
