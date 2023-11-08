@@ -17,11 +17,9 @@ class GuestController extends Controller
     public function home(){
         $perumahan = perumahan::with('foto_siteplan')->get();
         $dataPerumahan = new PerumahanCollection(perumahan::orderBy('updated_at','desc')->take(20)->get());
-        $videopesawaran =  Storage::url('VideoPesawaran1.mp4');
         return Inertia::render('HomePage',[
             'perumahan'=>$perumahan,
             'dataperumahan'=>$dataPerumahan,
-            'videopesawaran'=>$videopesawaran,
         ]);
     }
     public function livepresent(){
